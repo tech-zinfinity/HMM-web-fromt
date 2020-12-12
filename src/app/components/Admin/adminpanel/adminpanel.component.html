@@ -1,0 +1,39 @@
+<mat-toolbar  class="example-toolbar">
+	<button mat-icon-button (click)="isExpanded = !isExpanded"><mat-icon>menu</mat-icon></button>
+	<h1 class="example-app-name">Hotel Management</h1>
+</mat-toolbar>
+<mat-sidenav-container class="example-container" autosize>
+	<mat-sidenav #sidenav mode="side"  opened class="example-sidenav"
+	 (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">
+		<mat-nav-list>
+			<mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
+				<span class="full-width" *ngIf="isExpanded || isShowing" style="min-width: 200px;">
+					Hotel
+				</span>
+				<mat-icon mat-list-icon>home_work</mat-icon>
+			</mat-list-item>
+			<mat-divider></mat-divider>
+			<mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
+				<span class="full-width" *ngIf="isExpanded || isShowing">Customers</span>
+				<mat-icon mat-list-icon>supervisor_account</mat-icon>
+			</mat-list-item>	
+			<mat-divider></mat-divider>
+		</mat-nav-list>
+    <mat-nav-list>
+</mat-nav-list>
+	</mat-sidenav>
+
+	<div class="example-sidenav-content">
+
+		<app-admin-tabs></app-admin-tabs>
+		<app-add-hotels></app-add-hotels>
+
+	</div>
+
+</mat-sidenav-container>
+
+
+
+<!-- Copyright 2017 Google Inc. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->

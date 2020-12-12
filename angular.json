@@ -15,7 +15,7 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-builders/custom-webpack:browser",
           "options": {
             "outputPath": "dist/HotelManagement",
             "index": "src/index.html",
@@ -28,9 +28,13 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "customWebpackConfig": {
+              "path": "webpack.config.js"
+            }
           },
           "configurations": {
             "production": {
@@ -64,9 +68,12 @@
           }
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
-            "browserTarget": "HotelManagement:build"
+            "browserTarget": "HotelManagement:build",
+            "customWebpackConfig": {
+              "path": "we"
+            }
           },
           "configurations": {
             "production": {
@@ -92,6 +99,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -123,6 +131,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "HotelManagement"
+    }
+  },
+  "defaultProject": "HotelManagement",
+  "cli": {
+    "analytics": "38471fcb-3590-4cb6-b1b3-e69b38051741"
+  }
 }
