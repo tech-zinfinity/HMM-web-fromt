@@ -30,3 +30,16 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
 
 }
 }
+
+.example-app-name{
+    color: #ffd000;
+}
+.example-toolbar{
+    position: sticky;
+      position: -webkit-sticky; /* For macOS/iOS Safari */
+      top: 0; /* Sets the sticky toolbar to be on top */
+      z-index: 1000; 
+      background-color: black;
+      color: rgb(255, 208, 0);
+    
+}

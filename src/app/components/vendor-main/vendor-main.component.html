@@ -6,16 +6,16 @@
 	<mat-sidenav #sidenav mode="side"  opened class="example-sidenav"
 	 (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">
 		<mat-nav-list >
-			<mat-list-item (click)="showSubmenu = !showSubmenu" class="parent" routerLink="/admin">
+			<mat-list-item (click)="showSubmenu = !showSubmenu" class="parent" routerLink="/vendor">
 				<span class="full-width" *ngIf="isExpanded || isShowing" style="min-width: 200px;">
-					Hotel
+					Menu
 				</span>
-				<mat-icon mat-list-icon>home_work</mat-icon>
+				<mat-icon mat-list-icon>menu_book</mat-icon>
 			</mat-list-item>
 			<mat-divider></mat-divider>
-			<mat-list-item (click)="showSubmenu = !showSubmenu" class="parent"  routerLink="customers">
-				<span class="full-width" *ngIf="isExpanded || isShowing">Customers</span>
-				<mat-icon mat-list-icon>supervisor_account</mat-icon>
+			<mat-list-item (click)="showSubmenu = !showSubmenu" class="parent"  routerLink="orders">
+				<span class="full-width" *ngIf="isExpanded || isShowing">Orders</span>
+				<mat-icon mat-list-icon>restaurant</mat-icon>
 			</mat-list-item>	
 			<mat-divider></mat-divider>
 		</mat-nav-list>
@@ -25,7 +25,6 @@
 
 	<div class="example-sidenav-content">
 
-		<!-- <app-admin-tabs></app-admin-tabs>\ -->
 		<router-outlet></router-outlet>
 
 	</div>
