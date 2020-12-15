@@ -1,5 +1,10 @@
-<mat-toolbar  class="example-toolbar">
+<mat-toolbar  class="example-toolbar" style="display: flex; flex-direction: row; justify-content: space-between;">
 	<!-- <button mat-icon-button><mat-icon>menu</mat-icon></button> -->
 	<h1 class="example-app-name">Hotel Management</h1>
+
+	<div>
+		<button mat-stroked-button style="border-color: #ffd000;" routerLink="/register">Register as Hotel</button> &nbsp;
+		<button mat-stroked-button style="background-color: #ffd000; color: black;" routerLink="/login">Login </button>
+	</div>
 </mat-toolbar>
 <router-outlet></router-outlet>

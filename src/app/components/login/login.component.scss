@@ -1,0 +1,81 @@
+
+  #login-box {
+    position:relative;
+    margin: 5% auto;
+    min-height:600px;
+    height: auto;
+    width:700px;
+    background:#fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.6);
+  }
+  @media (min-width: 320px) and (max-width: 480px) {
+  
+ 
+    #login-box {
+        position:relative;
+        margin: 5% auto;
+        min-height:600px;
+        height: auto;
+        width:100%;
+        background:#fff;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.6);
+      }
+      .left-box {
+        position:absolute;
+        top:0;
+        left:0;
+        box-sizing: border-box;
+        padding:10px;
+        width:100% !important;
+        height:auto;
+        min-height: 500px;
+      }
+  }
+  .left-box {
+    position:absolute;
+    top:0;
+    left:0;
+    box-sizing: border-box;
+    padding:40px;
+    width:350px;
+    height:auto;
+    min-height: 500px;
+  }
+
+
+  .right-box {
+    position:absolute;
+    top:0;
+    right:0;
+    box-sizing:border-box;
+    padding:40px;
+    width:350px;
+    height:600px;
+    background-image:url(http://www.psdgraphics.com/file/colorful-triangles-background.jpg);
+    background-size:cover;
+    background-position:center;
+  }
+  .or {
+    position:absolute;
+    top:180px;
+    left:280px;
+    width:40px;
+    height:40px;
+    background:#efefef;
+    border-radius:50%;
+    box-shadow: 0 2px 4px rgba( 0,0,0,0.6);
+    line-height:40px;
+    text-align:center;
+  }
+  .right-box .signinwith {
+    display:block;
+    margin-bottom:40px;
+    font-size:28px;
+    color:#fff;
+    text-align:center;
+    text-shadow:0 2px 4px rgba( 0,0,0,0.6);
+  }
+
+  mat-form-field{
+      width: 100%;
+  }

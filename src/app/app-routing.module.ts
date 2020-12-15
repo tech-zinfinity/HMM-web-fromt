@@ -1,3 +1,5 @@
+import { LoginGuard } from './guards/login.guard';
+import { AuthGuard } from './guards/auth.guard';
 import { LoginComponent } from './components/login/login.component';
 import { ConfirmPasswordComponent } from './components/confirm-password/confirm-password.component';
 import { NgModule } from '@angular/core';
@@ -15,14 +17,15 @@ import { ViewCustomersComponent } from './components/view-customers/view-custome
 const routes: Routes = [
   {path:'', component: HomeComponent, children:[
     {path: '', component: AddHotelsComponent},
+    {path: 'register', component: AddHotelsComponent},
     {path: 'verify/:email', component: ConfirmPasswordComponent},
-    {path:'login', component: LoginComponent}
+    {path:'login', component: LoginComponent, canActivate:[LoginGuard]}
   ]},
-  {path:'admin', component:AdminpanelComponent, children:[
+  {path:'admin', component:AdminpanelComponent, canActivate:[AuthGuard], children:[
     {path:'', component: AdminTabsComponent},
     {path: 'customers', component: ViewCustomersComponent}
   ]},
-  {path:'vendor', component:VendorMainComponent,children:[
+  {path:'vendor', component:VendorMainComponent, canActivate:[AuthGuard], children:[
     {path: '', component: VendorViewMenuComponent},
     {path: 'orders', component: VendorViewOrderComponent}
   ]}

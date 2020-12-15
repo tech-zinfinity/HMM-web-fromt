@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { AuthService } from './../../services/auth.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 
@@ -25,9 +27,15 @@ export class VendorMainComponent implements OnInit {
       this.isShowing = false;
     }
   }
-  constructor() { }
+  constructor(private auth: AuthService,
+    private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  logout(){
+    this.auth.removeUser();
+    this.router.navigate(['/login']);
   }
 
 }

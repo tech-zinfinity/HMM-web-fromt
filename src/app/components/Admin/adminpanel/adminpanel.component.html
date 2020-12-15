@@ -1,6 +1,13 @@
-<mat-toolbar  class="example-toolbar">
-	<button mat-icon-button (click)="isExpanded = !isExpanded"><mat-icon>menu</mat-icon></button>
-	<h1 class="example-app-name">Hotel Management</h1>
+<mat-toolbar  class="example-toolbar" style="display: flex; flex-direction: row; justify-content: space-between;">
+	<div style="display: flex; flex-direction: row; justify-content: start;">
+		<button mat-icon-button (click)="isExpanded = !isExpanded"><mat-icon>menu</mat-icon></button>
+		<h1 class="example-app-name">Hotel Management</h1>
+	
+	</div>
+	<div>
+		<button mat-mini-fab style="background-color: rgb(235, 60, 60);" (click)="logout()"> <mat-icon>settings_power</mat-icon></button>
+	</div>
+
 </mat-toolbar>
 <mat-sidenav-container class="example-container" autosize>
 	<mat-sidenav #sidenav mode="side"  opened class="example-sidenav"

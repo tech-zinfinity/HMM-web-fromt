@@ -1,1 +1,19 @@
-<p>login works!</p>
+<div id="login-box">
+    <div class="left-box" style="margin-top: 20%;">
+      <h1> Login </h1>
+      <mat-form-field class="example-full-width" appearance="outline" >
+        <mat-label>Username</mat-label>
+        <input matInput placeholder="User name" [formControl]="usernameControl">
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="outline" >
+        <mat-label>Password</mat-label>
+        <input matInput placeholder="Password"[formControl]="passControl" >
+      </mat-form-field>
+
+      <button mat-flat-button style="background-color: #ffd000"  (click)="login(usernameControl.value,passControl.value)"
+      [disabled]="!((usernameControl.valid) && (passControl.valid))">Login</button>
+      <!-- <input type="submit" name="Request For Registration" placeholder="Sing Up"/> -->
+    </div>
+    <div class="right-box" id="content-desktop">
+    </div>
+  </div> 
