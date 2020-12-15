@@ -2,6 +2,9 @@
 	<button mat-icon-button (click)="isExpanded = !isExpanded"><mat-icon>menu</mat-icon></button>
 	<h1 class="example-app-name">Hotel Management</h1>
 </mat-toolbar>
+<mat-toolbar class="example-toolbar" style="display: flex; flex-direction: row; justify-content: flex-start;">
+	<button mat-raised-button style="background-color: yellow">Add Menu</button>
+</mat-toolbar>
 <mat-sidenav-container class="example-container" autosize>
 	<mat-sidenav #sidenav mode="side"  opened class="example-sidenav"
 	 (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">

@@ -7,5 +7,5 @@ export interface User {
     active?:boolean,
     createdOn?: Date | any,
     updatedOn?: Date | any,
-    verified: boolean
+    verified?: boolean
 }

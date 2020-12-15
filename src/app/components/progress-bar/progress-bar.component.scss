@@ -6,9 +6,11 @@ mat-spinner {
   ::ng-deep  .mat-spinner
   {
     circle {
-        stroke: #e4f5f5;
+        stroke: black;
        
-    }
- 
-    
+    } 
+  }
+
+  ::ng-deep .mat-card{
+    padding: 0;
   }

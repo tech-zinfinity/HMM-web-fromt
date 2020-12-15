@@ -11,15 +11,18 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   sendotp(emailid: string){
-    return this.http.get(environment.apiurl+'user/sendotp/'+emailid);
+    return this.http.get(environment.apiurl+'/user/sendotp/'+emailid);
   }
   verifyotp(emailid: string, otp: string){
-    return this.http.get(environment.apiurl+'user/verifyotp/'+emailid+'/'+otp);
+    return this.http.get(environment.apiurl+'/user/verifyotp/'+emailid+'/'+otp);
   }
   signup(user: User){
-    return this.http.post(environment.apiurl+'/signup', user);
+    return this.http.post(environment.apiurl+'/user/signup', user);
   }
   login(username, password){
-    return this.http.get(environment.apiurl+'/login/'+username+'/'+password);
+    return this.http.get(environment.apiurl+'/user/login/'+username+'/'+password);
+  }
+  activate(password, email){
+    return this.http.get(environment.apiurl+'/user/activate/'+password+'/'+email);
   }
 }

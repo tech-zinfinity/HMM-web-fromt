@@ -15,6 +15,9 @@ import { VendorViewMenuComponent } from './components/vendor-view-menu/vendor-vi
 import { VendorViewOrderComponent } from './components/vendor-view-order/vendor-view-order.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
+import { ConfirmPasswordComponent } from './components/confirm-password/confirm-password.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,13 +31,17 @@ import { ProgressBarComponent } from './components/progress-bar/progress-bar.com
     VendorViewMenuComponent,
     VendorViewOrderComponent,
     LoginComponent,
-    ProgressBarComponent
+    ProgressBarComponent,
+    ConfirmPasswordComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

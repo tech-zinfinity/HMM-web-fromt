@@ -6,80 +6,83 @@
     <label for="tab2"><i class="fa fa-pencil-square-o"></i><span>Approved</span></label>
 
     <input id="tab3" type="radio" name="tabs">
-    <label for="tab3"><i class="fa fa-bar-chart-o"></i><span>Published</span></label>
+    <label for="tab3"><i class="fa fa-bar-chart-o"></i><span>Verified</span></label>
 
     <input id="tab4" type="radio" name="tabs">
-    <label for="tab4"><i class="fa fa-folder-open-o"></i><span>Rejected</span></label>
+    <label for="tab4"><i class="fa fa-bar-chart-o"></i><span>Published</span></label>
+
+    <input id="tab5" type="radio" name="tabs">
+    <label for="tab5"><i class="fa fa-folder-open-o"></i><span>Rejected</span></label>
 
     <section id="content1" class="tab-content">
-        <h3>Headline 1</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur.</p>
+          <div *ngFor="let hotel of requestedHotesl">
+            <mat-card>
+              Name : <strong>{{hotel.name}}</strong>
+              <br>
+              <br>
+              City : <strong>{{hotel.address.city}}</strong>
+              <br><br>
+              <button mat-raised-button style="background-color: rgb(13, 136, 13); color: white;"
+              (click)="approve(hotel)">APPROVE</button>&nbsp;
+              <button mat-raised-button style="background-color: rgb(150, 10, 22);  color: white;">REJECT</button>
+
+            </mat-card>
+            <br>
+          </div>
     </section>
 
     <section id="content2" class="tab-content">
-        <h3>Headline 2</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <div *ngFor="let hotel of approvedHotels">
+        <mat-card>
+          Name : <strong>{{hotel.name}}</strong>
+          <br>
+          <br>
+          City : <strong>{{hotel.address.city}}</strong>
+          <br><br>
+          <button mat-raised-button style="background-color: rgb(13, 136, 13); color: white;"
+          (click)="sendActivationEmail(hotel)">Send Email Activation link</button>&nbsp;
+
+        </mat-card>
+        <br>
+      </div>
     </section>
 
     <section id="content3" class="tab-content">
-        <h3>Headline 3</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <div *ngFor="let hotel of verifiedHotels">
+        <mat-card>
+          Name : <strong>{{hotel.name}}</strong>
+          <br>
+          <br>
+          City : <strong>{{hotel.address.city}}</strong>
+          <br><br>
+        </mat-card>
+        <br>
+      </div>
     </section>
 
     <section id="content4" class="tab-content">
-        <h3>Headline 4</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat.</p>
+      <div *ngFor="let hotel of publishedHotels">
+        <mat-card>
+          Name : <strong>{{hotel.name}}</strong>
+          <br>
+          <br>
+          City : <strong>{{hotel.address.city}}</strong>
+          <br><br>
+        </mat-card>
+        <br>
+      </div>
     </section>
 
     <section id="content5" class="tab-content">
-        <h3>Headline 5</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <div *ngFor="let hotel of rejectedHotels">
+        <mat-card>
+          Name : <strong>{{hotel.name}}</strong>
+          <br>
+          <br>
+          City : <strong>{{hotel.address.city}}</strong>
+          <br><br>
+        </mat-card>
+        <br>
+      </div>
     </section>
 </div>

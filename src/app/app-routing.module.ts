@@ -1,3 +1,5 @@
+import { LoginComponent } from './components/login/login.component';
+import { ConfirmPasswordComponent } from './components/confirm-password/confirm-password.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AddHotelsComponent } from './components/add-hotels/add-hotels.component';
@@ -12,7 +14,9 @@ import { ViewCustomersComponent } from './components/view-customers/view-custome
 
 const routes: Routes = [
   {path:'', component: HomeComponent, children:[
-    {path: '', component: AddHotelsComponent}
+    {path: '', component: AddHotelsComponent},
+    {path: 'verify/:email', component: ConfirmPasswordComponent},
+    {path:'login', component: LoginComponent}
   ]},
   {path:'admin', component:AdminpanelComponent, children:[
     {path:'', component: AdminTabsComponent},
