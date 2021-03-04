@@ -39,7 +39,9 @@ export class LoginComponent implements OnInit {
           if(data.body.roles.includes('ADMIN')){
             this.router.navigate(['/admin'])
           }else if(data.body.roles.includes('HOTEL')){
-            this.router.navigate(['/vendor'])
+            console.log(data.body);
+            
+            this.router.navigate(['/vendor',data.body.email]);
           }
         }else{
           spin.close();

@@ -41,6 +41,11 @@ export class FireStorageService {
       return this.afstorage.upload(type+'/'+newname, file);
   }
 
+  public uploadToStoragePNG(file: any, type: string, name: string) : any{
+    let newname  = `img_${name+'_'+new Date().getTime()}.png`
+    return this.afstorage.upload(type+'/'+newname, file);
+}
+
   public uploadRawFileToStorage(file: any, type: string, extension: string, userName: string) : any{
     let newname  = `file_${userName +'_'+new Date().getTime()}.${extension}`
     return this.afstorage.upload(environment.env+'/'+type+'/'+newname, file);

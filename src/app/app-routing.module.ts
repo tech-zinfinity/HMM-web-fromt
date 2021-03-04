@@ -16,7 +16,7 @@ import { ViewCustomersComponent } from './components/view-customers/view-custome
 
 const routes: Routes = [
   {path:'', component: HomeComponent, children:[
-    {path: '', component: AddHotelsComponent},
+    {path: '', component: LoginComponent},
     {path: 'register', component: AddHotelsComponent},
     {path: 'verify/:email', component: ConfirmPasswordComponent},
     {path:'login', component: LoginComponent, canActivate:[LoginGuard]}
@@ -25,7 +25,7 @@ const routes: Routes = [
     {path:'', component: AdminTabsComponent},
     {path: 'customers', component: ViewCustomersComponent}
   ]},
-  {path:'vendor', component:VendorMainComponent, canActivate:[AuthGuard], children:[
+  {path:'vendor/:id', component:VendorMainComponent, canActivate:[AuthGuard], children:[
     {path: '', component: VendorViewMenuComponent},
     {path: 'orders', component: VendorViewOrderComponent}
   ]}

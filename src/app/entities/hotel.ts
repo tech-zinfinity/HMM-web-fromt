@@ -1,3 +1,4 @@
+import { Table } from './table';
 import { Address } from './address';
 import { ContactInfo } from "./contact-info";
 import { User } from "./user";
@@ -12,5 +13,6 @@ export interface Hotel {
     status?:string,
     deleted?:boolean,
     photo?:string,
-    user?:User
+    user?:User,
+    tables?:Table[]
 }

@@ -1,1 +1,9 @@
-<p>vendor-view-menu works!</p>
+<div style="display: flex; flex-direction: column; 
+justify-content: center;"
+*ngFor="let table of this.hotel?.tables">
+    <mat-card>
+        {{table.tableNo}}
+        <br>
+        <img [src]="table?.link">
+    </mat-card>
+</div>
