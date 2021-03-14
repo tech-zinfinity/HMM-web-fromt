@@ -1,9 +1,28 @@
-<div style="display: flex; flex-direction: column; 
-justify-content: center;"
-*ngFor="let table of this.hotel?.tables">
-    <mat-card>
-        {{table.tableNo}}
-        <br>
-        <img [src]="table?.link">
-    </mat-card>
-</div>
+<mat-tab-group mat-align-tabs="start" animationDuration="450ms">
+    <mat-tab label="Menus">
+        <div style="display: flex; flex-direction: column; 
+        justify-content: center;"
+        *ngFor="let menu of menus">
+            <mat-card>
+                {{menu.title}}
+                <br>
+                {{menu.description}}
+                <br>
+                {{menu.cost}}
+                <br>
+                <img [src]="table?.link">
+            </mat-card>
+        </div>
+    </mat-tab>
+    <mat-tab label="Tables">
+        <div style="display: flex; flex-direction: column; 
+        justify-content: center;"
+        *ngFor="let table of this.hotel?.tables">
+            <mat-card>
+                {{table.tableNo}}
+                <br>
+                <img [src]="table?.link">
+            </mat-card>
+        </div>
+    </mat-tab>
+</mat-tab-group>

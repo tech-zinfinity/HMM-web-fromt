@@ -36,9 +36,7 @@ export class AdminTabsComponent implements OnInit {
     });
 
     this.hotelService.getVerifiedHotelsByLimit(5).subscribe((data:Hotel[]) =>{
-      this.verifiedHotels = data;      
-      console.log(data);
-      
+      this.verifiedHotels = data;            
     },err=>{
       this.verifiedHotels = [];
     });

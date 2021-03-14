@@ -46,7 +46,6 @@ export class VendorMainComponent implements OnInit {
     let id = this.route.snapshot.params['id'];
     this.hotelService.getByEmail(id).subscribe((data: GenericResponse<any>) =>{
       this.hotel = data.body;
-      console.log(this.hotel);
       this.hotelService.updateHotel(this.hotel);
     }, err=>{
       console.log(err);
@@ -57,14 +56,11 @@ export class VendorMainComponent implements OnInit {
   registerTable(){
     let uid = uuid.v1();
     uid = this.hotel.id+'-'+uid;
-    console.log("UID "+uid);
     this.tableService.registerTable(this.hotel.id, '1',uid).subscribe((d: File) =>{
         this.storage.uploadToStoragePNG(d,'TABLE', uid+'-'+'1')
         .then(          
           object =>{
             let name = object.metadata.name;
-            console.log(name);
-            console.log(object.metadata.fullPath);
             this.tableService.registerTableQR(this.hotel.id, '1', object.metadata.name, uid).subscribe(d=>{
               this.hotel = d;
               this.hotelService.updateHotel(this.hotel);

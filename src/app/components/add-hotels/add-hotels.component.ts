@@ -107,7 +107,6 @@ export class AddHotelsComponent implements OnInit {
       name: form.name
     }
 
-    console.log(hotel, user);
     let spin = this.spinner.open();
     this.hotelService.registerHotel(hotel, user).subscribe((data: GenericResponse<any>) =>{
       spin.close();

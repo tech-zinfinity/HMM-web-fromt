@@ -18,9 +18,7 @@ export class TableService {
       });
       this.http.get(environment.apiurl+'/ops/registerTable/'+hotelId+'/'+tableNo+'/'+uid, {
         responseType: 'blob', headers: headers
-      }).subscribe(data =>{
-        console.log('data',data);
-        
+      }).subscribe(data =>{        
         saveAs(data,tableNo+'.png');
         obs.next(this.blobToFile(data,tableNo+'.png'));
         obs.complete();

@@ -1,3 +1,4 @@
+import { JWTInterceptorService } from './interceptor/jwtinterceptor.service';
 import { environment } from 'src/environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -17,7 +18,7 @@ import { VendorViewOrderComponent } from './components/vendor-view-order/vendor-
 import { LoginComponent } from './components/login/login.component';
 import { ProgressBarComponent } from './components/progress-bar/progress-bar.component';
 import { ConfirmPasswordComponent } from './components/confirm-password/confirm-password.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 //DB
@@ -52,7 +53,11 @@ import { AngularFireStorageModule } from "@angular/fire/storage";
     AngularFirestoreModule,
     AngularFireStorageModule,
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: JWTInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

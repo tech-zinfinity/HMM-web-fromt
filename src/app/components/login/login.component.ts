@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
+import { AuthReponse } from 'src/app/entities/auth-reponse';
 
 @Component({
   selector: 'app-login',
@@ -30,18 +31,15 @@ export class LoginComponent implements OnInit {
   login(username: string, password: string){
     let spin  = this.spinner.open();
     if(username&&password){
-      this.userService.login(username, password).subscribe((data: GenericResponse<User>) =>{
+      this.userService.login(username, password).subscribe((data: GenericResponse<AuthReponse>) =>{
         spin.close();
-        console.log(data);
         
         if(data.code === "OK"){
-          this.auth.updateUser(data.body);
+          this.auth.updateUser(data.body.user, data.body.token);
           if(data.body.roles.includes('ADMIN')){
             this.router.navigate(['/admin'])
           }else if(data.body.roles.includes('HOTEL')){
-            console.log(data.body);
-            
-            this.router.navigate(['/vendor',data.body.email]);
+            this.router.navigate(['/vendor',data.body.user.username]);
           }
         }else{
           spin.close();
