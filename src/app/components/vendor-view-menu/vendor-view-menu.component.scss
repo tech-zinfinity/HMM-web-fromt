@@ -1,0 +1,23 @@
+.coverPicDisplay{
+    max-width: 100px; 
+    height: 100px;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.post {
+    margin: 10px;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    grid-gap: 32px;
+    grid-auto-flow: dense;
+}
+
+@media (max-width: 459px) {
+    .post {
+      display: flex;
+      flex-direction: column;
+    }
+  }

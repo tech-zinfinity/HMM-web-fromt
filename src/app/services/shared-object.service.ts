@@ -7,7 +7,7 @@ export class SharedObjectService {
 
   constructor() { }
 
-  protected menuCategories: string[] = [];
+  menuCategories: string[] = [];
 
   updateMenuCategories(categories: string[]){
     this.menuCategories = categories;

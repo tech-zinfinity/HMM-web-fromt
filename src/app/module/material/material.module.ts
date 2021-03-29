@@ -32,7 +32,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 // import {MatNativeDateModule} from '@angular/material';
 // import { MatMomentDateModule } from "@angular/material-moment-adapter"
-
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [],
@@ -44,14 +44,14 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatFormFieldModule,MatRadioModule,MatMenuModule, 
     MatInputModule,MatChipsModule,MatDialogModule, MatSnackBarModule,
     MatTableModule,MatProgressBarModule,
-    MatPaginatorModule,MatSelectModule,
+    MatPaginatorModule,MatSelectModule,MatSlideToggleModule,
     MatRippleModule, MatIconModule,MatGridListModule, 
     MatSidenavModule,MatListModule,MatTooltipModule,MatTreeModule,MatExpansionModule
   ],
   exports:[
     MatButtonModule,
     MatCardModule,MatBadgeModule,
-    MatToolbarModule,MatBottomSheetModule,
+    MatToolbarModule,MatBottomSheetModule,MatSlideToggleModule,
     MatFormFieldModule,MatChipsModule,MatProgressSpinnerModule,MatCheckboxModule,
     MatInputModule,MatProgressBarModule,MatTabsModule,MatDividerModule,
     MatTableModule,MatSelectModule,MatStepperModule,MatDatepickerModule,
