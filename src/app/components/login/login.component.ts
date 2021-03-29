@@ -36,9 +36,9 @@ export class LoginComponent implements OnInit {
         
         if(data.code === "OK"){
           this.auth.updateUser(data.body.user, data.body.token);
-          if(data.body.roles.includes('ADMIN')){
+          if(data.body.roles.includes('ROLE_ADMIN')){
             this.router.navigate(['/admin'])
-          }else if(data.body.roles.includes('HOTEL')){
+          }else if(data.body.roles.includes('ROLE_HOTEL')){
             this.router.navigate(['/vendor',data.body.user.username]);
           }
         }else{
