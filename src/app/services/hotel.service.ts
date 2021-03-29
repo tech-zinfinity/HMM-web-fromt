@@ -65,4 +65,9 @@ export class HotelService {
   getByEmail(email: string){
     return this.http.get(environment.apiurl+'/hotel/getHotelByEmail/'+email);
   }
+
+  deleteMenu(menuId:string, hotelId: string){
+    return this.http.get(environment.apiurl+'/ops/deleteMenu/'+menuId
+    +'/'+hotelId);
+  }
 }

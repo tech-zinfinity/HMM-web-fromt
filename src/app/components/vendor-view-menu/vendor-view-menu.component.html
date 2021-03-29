@@ -1,28 +1,202 @@
-<mat-tab-group mat-align-tabs="start" animationDuration="450ms">
-    <mat-tab label="Menus">
-        <div style="display: flex; flex-direction: column; 
-        justify-content: center;"
-        *ngFor="let menu of menus">
-            <mat-card>
-                {{menu.title}}
-                <br>
-                {{menu.description}}
-                <br>
-                {{menu.cost}}
-                <br>
-                <img [src]="table?.link">
-            </mat-card>
-        </div>
-    </mat-tab>
-    <mat-tab label="Tables">
-        <div style="display: flex; flex-direction: column; 
-        justify-content: center;"
-        *ngFor="let table of this.hotel?.tables">
-            <mat-card>
-                {{table.tableNo}}
-                <br>
-                <img [src]="table?.link">
-            </mat-card>
-        </div>
-    </mat-tab>
-</mat-tab-group>
+<div >
+    <div>
+        <mat-tab-group mat-align-tabs="start" animationDuration="450ms">
+            
+            <mat-tab label="Menus">
+                <div style="display: flex; flex-direction: column;">
+                    <mat-accordion>
+                        <mat-expansion-panel [expanded]="true">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    Add Menu
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <!-- <mat-card style="width: 98%;"> -->
+                                <form [formGroup]="menuForm">
+                                    <div style="display: flex; flex-direction: row; 
+                                    width: 96%; justify-content: center;">
+                                        <mat-form-field appearance="outline" style="width: 40%; margin-right: 10%;">
+                                            <mat-label>Title</mat-label>
+                                            <input matInput placeholder="name of the dish"
+                                            formControlName="title">
+                                        </mat-form-field>
+                                        <mat-form-field appearance="outline" style="width: 40%;">
+                                            <mat-label>Description</mat-label >
+                                            <input matInput placeholder="description of the dish"
+                                            formControlName="description">
+                                        </mat-form-field>
+                                    </div>
+                                    <div style="display: flex; flex-direction: row; 
+                                    width: 96%; justify-content: center;">
+                                        <mat-form-field appearance="outline" style="width: 40%; margin-right: 10%;">
+                                            <mat-label>Cost</mat-label>
+                                            <input matInput placeholder="add cost with gst included"
+                                            formControlName="cost">
+                                        </mat-form-field>
+                                        <mat-form-field appearance="outline" style="width: 40%;">
+                                            <mat-label>Category</mat-label>
+                                            <mat-select formControlName="category" >
+                                                <mat-option *ngFor="let category of this.share?.menuCategories" [value]="category">{{category}}</mat-option>
+                                            </mat-select>                
+                                        </mat-form-field>
+                                    </div>
+                                    <div style="display: flex; flex-direction: row; 
+                                    width: 96%; justify-content: start;">
+                                        <mat-slide-toggle  formControlName="veg" style="margin-left:5%; margin-right: 20%;">Veg</mat-slide-toggle>
+                                        
+                                        <mat-slide-toggle formControlName="available">Available in restaurant</mat-slide-toggle>
+                                    </div>
+                                </form>
+
+                                    <div style="display: flex; flex-direction: row; margin-top: 20px;
+                                    margin-left: 5%;">
+                                        <mat-card *ngIf="files.length<=3" style="width: 130px; height: 120px; margin-right: 2%; cursor: pointer;"
+                                        (click)="file.click()">
+                                            <mat-icon style="font-size: 50px;">add</mat-icon>
+                                        </mat-card> 
+                                        <input type="file" name=""  hidden #file accept="image/png, image/jpeg"
+                                        (change)="addFile($event)">
+                                        <div style="display: flex; flex-direction: row;" 
+                                        *ngFor="let file of files">
+                                            <mat-card style="width: 150px; height: 150px; margin-right: 10px;
+                                            display: flex; flex-direction: column; padding: 0;">
+                                                    <img [src]="file.key" alt="your image"  class="coverPicDisplay">
+                                                    <button mat-button style="background-color: rgb(238, 19, 19); 
+                                                    color: white;" (click)="removeImageFromArray(file.key)">Remove &nbsp;
+                                                        <mat-icon>
+                                                            arrow_right_alt
+                                                        </mat-icon>
+                                                    </button>
+                                            </mat-card>
+                                        </div>        
+                                    </div>
+                                    <button mat-raised-button color="accent" style="float: right; margin-right: 10%;"
+                                    (click)="addMenu(menuForm.value)">Submit</button>
+                                    <button mat-raised-button color="primary" style="float: right; margin-right: 1%;"
+                                    (click)="resetMenuForm()">Reset</button>
+                            <!-- </mat-card> -->
+                        </mat-expansion-panel>
+                    </mat-accordion>
+
+                    <br>
+                    <div style="display: flex; flex-direction: column;
+                    justify-content: center; margin: 10px;"
+                    *ngFor="let menu of menus">
+                        <mat-card>
+                            <span style="font-size: 30px; display: inline-flex;
+                             justify-content: space-between; width: 100%;">{{menu.title}} 
+                            <div>
+                                <button mat-raised-button *ngIf="menu.veg" style="margin: 10px;"><mat-icon style="color: greenyellow;">stop_circle</mat-icon>
+                                    <mat-slide-toggle [checked]="menu.veg">VEG</mat-slide-toggle>
+                                </button>
+                                <button mat-raised-button *ngIf="!menu.veg" style="margin: 10px;"><mat-icon style="color: red;">stop_circle</mat-icon>
+                                    <mat-slide-toggle [checked]="menu.veg">NON-VEG</mat-slide-toggle>
+                                </button>
+
+                                <button mat-raised-button *ngIf="menu.available" style="margin: 10px;">
+                                    <mat-slide-toggle [checked]="menu.available">Available</mat-slide-toggle>
+                                </button>
+
+                                <button mat-raised-button style="margin: 10px;">{{menu.category}}</button>
+                                <button mat-raised-button style="margin: 10px;" (click)="deleteMenu(menu.id)">
+                                    <mat-icon style="color: red">delete</mat-icon>
+                                </button>
+                            </div></span>
+                            <br>
+                            <span style="font-style: italic; color: gray;">{{menu.description}}</span>
+                            <br><br>
+                            <mat-chip-list></mat-chip-list>
+                            <mat-chip  style="font-size: 20px; margin-left: 10px;">{{menu.cost | currency:'INR'}}</mat-chip>
+                            <!-- <span></span> -->
+                            <br>
+                            <div *ngIf="menu?.temppicsUrls">
+                                <div style="display: flex; flex-direction: row; margin-top: 20px;" *ngIf="menu?.temppicsUrls.length>0">
+                                    <div *ngFor="let pic of menu?.temppicsUrls">
+                                        <mat-card style="width: 150px; height: 150px; margin-right: 10px;
+                                                display: flex; flex-direction: column; padding: 0;">
+                                                <img [src]="pic" class="coverPicDisplay">
+                                                <button mat-button style="background-color: rgb(238, 19, 19); 
+                                                color: white;" (click)="removeImageFromArray(file.key)">Remove &nbsp;
+                                                    <mat-icon>
+                                                        arrow_right_alt
+                                                    </mat-icon>
+                                                </button>
+                                        </mat-card>
+                                    </div>
+                                </div>
+                                <div style="display: flex; flex-direction: row; margin-top: 20px;" *ngIf="!(menu?.temppicsUrls.length>0)">
+                                    <mat-card style="width: 150px; height: 150px; margin-right: 10px;
+                                            display: flex; flex-direction: column; padding: 0;">
+                                            <img src="../../../assets/menu_x.PNG" class="coverPicDisplay">
+                                            <button mat-button style="background-color: gold; 
+                                            color: white;" (click)="removeImageFromArray(file.key)">No Image &nbsp;
+                                            </button>
+                                    </mat-card>
+                                </div>
+                            </div>
+                            <div *ngIf="!(menu?.temppicsUrls)">
+                                <div style="display: flex; flex-direction: row; margin-top: 20px;">
+                                    <mat-card style="width: 150px; height: 150px; margin-right: 10px;
+                                            display: flex; flex-direction: column; padding: 0;">
+                                            <img src="../../../assets/menu_x.PNG" class="coverPicDisplay">
+                                            <button mat-button style="background-color: gold; 
+                                            color: white;" (click)="removeImageFromArray(file.key)">No Image &nbsp;
+                                            </button>
+                                    </mat-card>
+                                </div>
+                            </div>
+                        </mat-card>
+                    </div>
+                </div>
+
+            </mat-tab>
+            <mat-tab label="Tables">
+                <mat-accordion>
+                    <mat-expansion-panel [expanded]="true">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Add Table
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <div style="display: flex; flex-direction: column; justify-content: flex-start;
+                        margin-left: 5%; margin-right: 5%;">
+                            <form [formGroup]="tableForm">
+                                <mat-form-field appearance="outline" style="width: 30%;">
+                                    <mat-label>Table Number</mat-label>
+                                    <input matInput placeholder="d-122, 12, ssd-01..."
+                                    formControlName="tableNo">
+                                </mat-form-field>
+                            </form>
+                            <div style="display: flex; flex-direction: row; width: 100%;
+                            justify-content: flex-end;">
+                                <button mat-raised-button color="accent" style="float: right; margin-right: 2%;"
+                                (click)="addTable(tableForm.value)">Add</button>
+                                <button mat-raised-button color="primary" style="float: right; margin-right: 1%;"
+                                (click)="resetTableForm()">Reset</button> 
+    
+                            </div>
+                        </div>
+                   
+                    </mat-expansion-panel>
+                </mat-accordion>
+                <div class="post">
+                <article *ngFor="let table of this.hotel?.tables">
+                    <mat-card style="padding: 0;">
+                        <img [src]="table?.link">
+                        <br>
+                        <div style="display: flex; font-size: larger;
+                        background-color: yellow; padding: 10px; 
+                        border-radius: 7px; padding-left: 20px; font-weight: bold;
+                        flex-direction: row; justify-content: space-between;">
+                            <span style="padding-top: 5%;">{{table.tableNo}}</span>
+                            <button mat-icon-button (click)="deleteTable(table.tableId)">
+                                <mat-icon style="color: red;">delete</mat-icon>
+                            </button>
+                        </div>
+                    </mat-card>
+                </article>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>

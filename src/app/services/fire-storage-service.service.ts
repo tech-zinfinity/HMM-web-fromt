@@ -1,6 +1,6 @@
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
-import { AngularFireStorage } from '@angular/fire/storage';
+import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -44,7 +44,12 @@ export class FireStorageService {
   public uploadToStoragePNG(file: any, type: string, name: string) : any{
     let newname  = `img_${name+'_'+new Date().getTime()}.png`
     return this.afstorage.upload(type+'/'+newname, file);
-}
+  }
+
+  public uploadToStoragePNGObs(file: any, type: string, name: string) : AngularFireUploadTask{
+    let newname  = `img_${name+'_'+new Date().getTime()}.png`
+    return this.afstorage.upload(type+'/'+newname, file);
+  }
 
   public uploadRawFileToStorage(file: any, type: string, extension: string, userName: string) : any{
     let newname  = `file_${userName +'_'+new Date().getTime()}.${extension}`

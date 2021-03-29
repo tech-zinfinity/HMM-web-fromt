@@ -46,4 +46,9 @@ export class TableService {
     return this.http.get(environment.apiurl+'/ops/registerTableQR/'+hotelId
     +'/'+tableNo+'/'+URL+'/'+uid);
   }
+
+  deleteTable(tableId:string, hotelId: string){
+    return this.http.get(environment.apiurl+'/ops/deleteTable/'+tableId
+    +'/'+hotelId);
+  }
 }

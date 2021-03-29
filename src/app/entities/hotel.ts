@@ -1,3 +1,4 @@
+import { Menu } from './menu';
 import { Table } from './table';
 import { Address } from './address';
 import { ContactInfo } from "./contact-info";
@@ -15,4 +16,5 @@ export interface Hotel {
     photo?:string,
     user?:User,
     tables?:Table[]
+    menus?:Menu[]
 }
