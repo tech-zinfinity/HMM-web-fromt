@@ -1,0 +1,136 @@
+<div style="margin: 2%; width: 96%; height: auto; 
+word-wrap: break-word;" *ngIf="hotel">
+    <mat-card style="display: flex; flex-direction: column;">
+        <div style="display: flex; flex-direction: row;
+        justify-content: space-between;">
+            <div>
+                <button *ngIf="!(hotel.status === 'PUBLISHED')" mat-raised-button style="background-color: green; color: white;"> PUBLISH </button>
+                <button *ngIf="(hotel.status === 'PUBLISHED')" mat-raised-button style="background-color: rgb(231, 13, 13); color: white;"> De-PUBLISH </button>
+                &nbsp;
+                <button *ngIf="!hotel.active" mat-raised-button style="background-color: yellow; color: black;"> Activate </button>
+                <button *ngIf="hotel.active" mat-raised-button style="background-color: rgb(231, 13, 13); color: white;"> De-Activate </button>
+    
+                &nbsp;
+                <button mat-raised-button style="background-color: blue; color: white;"> Edit </button>
+            </div>
+            <div>
+                <mat-icon style="color: rgb(10, 180, 10);
+                font-size: 45px; margin-right: 15px;">{{hotel.status | hotelStatus}}</mat-icon>
+           </div>
+        </div>
+        <br>
+        <div style="font-size: 15px; display: flex; flex-direction: column;">
+            <span *ngIf="!hotel.active"> 
+                <span style="color: red;">*</span>
+                <span style="color: red; font-style: italic;">please activate hotel to display your menus for public</span> 
+            </span>
+            <span *ngIf="!(hotel.status === 'PUBLISHED')"> 
+                <span style="color: red;">*</span>
+                <span style="color: red; font-style: italic;">please publish hotel with <span style="font-weight: bold;"> KYC and Account information</span> for approval</span> 
+            </span>
+        </div>
+        
+    </mat-card>
+    <br>
+    <mat-card style="display: flex; flex-direction: column;
+     justify-content: center;" class="shadow">
+       <div style="display: flex; flex-direction: row; justify-content: space-between;">
+           <div>
+                <span class="key">Hotel Registration ID : &nbsp;</span>
+                <span class="value">{{hotel.id}}</span>
+           </div>
+       </div>
+       <br>
+       <div>
+            <span class="key">Name : &nbsp;</span>
+            <span class="value">{{hotel.name}}</span>
+       </div>
+       <br>
+       <div>
+
+       </div>
+    </mat-card>
+
+    <br>
+
+    <mat-card class="shadow" style="display: flex; flex-direction: column;
+     justify-content: center;">
+     <span class="key">Address</span>
+     <br>
+
+       <div style="display: flex; flex-direction: column; 
+       justify-content: space-between; margin-left: 20px;">
+           <div>
+                <span class="key">Line 1 : &nbsp;</span>
+                <span class="value">{{hotel.address.line1}}</span>
+           </div>
+           <br>
+           <div>
+                <span class="key">Line 2 : &nbsp;</span>
+                <span class="value">{{hotel.address.line2}}</span>
+           </div>
+           <br>
+           <div>
+                <span class="key">LandMark : &nbsp;</span>
+                <span class="value">{{hotel.address.landmark}}</span>
+           </div>
+           <br>
+           <div>
+                <span class="key">City : &nbsp;</span>
+                <span class="value">{{hotel.address.city}}</span>
+           </div>
+           <br>
+           <div>
+                <span class="key">State : &nbsp;</span>
+                <span class="value">{{hotel.address.state}}</span>
+            </div>
+            <br>
+            <div>
+                <span class="key">Country : &nbsp;</span>
+                <span class="value">{{hotel.address.country}}</span>
+            </div>
+            <br>
+            <div>
+                <span class="key">Pincode : &nbsp;</span>
+                <span class="value">{{hotel.address.pincode}}</span>
+            </div>
+            <br>
+
+
+
+       </div>
+       <br>
+    </mat-card>
+
+    <br>
+    <mat-card class="shadow" style="display: flex; flex-direction: column;
+     justify-content: center;">
+     <span class="key">Contact Info</span>
+     <br>
+
+       <div style="display: flex; flex-direction: column; 
+       justify-content: space-between; margin-left: 20px;">
+           <div>
+                <span class="key">Phone Number : &nbsp;</span>
+                <span class="value">{{hotel.contactinfo.phone1}}</span>
+           </div>
+       </div>
+       <br>
+    </mat-card>  
+    
+    <br>
+    <mat-card style="display: flex; flex-direction: column;
+     justify-content: center;">
+     <span class="key">GST Details</span>
+     <br>
+
+       <div style="display: flex; flex-direction: column; 
+       justify-content: space-between; margin-left: 20px;">
+           <!-- <div>
+                <span class="key">Phone Number : &nbsp;</span>
+                <span class="value">{{hotel.contactinfo.phone1}}</span>
+           </div> -->
+       </div>
+       <br>
+    </mat-card>  <br>
+</div>

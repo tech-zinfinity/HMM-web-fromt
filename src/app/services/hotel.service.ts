@@ -70,4 +70,8 @@ export class HotelService {
     return this.http.get(environment.apiurl+'/ops/deleteMenu/'+menuId
     +'/'+hotelId);
   }
+  
+  getCategoryMenus(id: string){
+    return this.http.get(environment.apiurl+'/hotel/getCategoryMenus/'+id);
+  }
 }

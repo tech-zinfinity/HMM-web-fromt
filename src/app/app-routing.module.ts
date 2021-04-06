@@ -1,3 +1,5 @@
+import { VendorProfileComponent } from './components/vendor-profile/vendor-profile.component';
+import { NotificationComponent } from './components/notification/notification.component';
 import { LoginGuard } from './guards/login.guard';
 import { AuthGuard } from './guards/auth.guard';
 import { LoginComponent } from './components/login/login.component';
@@ -23,11 +25,15 @@ const routes: Routes = [
   ]},
   {path:'admin', component:AdminpanelComponent, canActivate:[AuthGuard], children:[
     {path:'', component: AdminTabsComponent},
-    {path: 'customers', component: ViewCustomersComponent}
+    {path: 'customers', component: ViewCustomersComponent},
+    {path:'notifications', component: NotificationComponent}
   ]},
   {path:'vendor/:id', component:VendorMainComponent, canActivate:[AuthGuard], children:[
     {path: '', component: VendorViewMenuComponent},
-    {path: 'orders', component: VendorViewOrderComponent}
+    {path: 'orders', component: VendorViewOrderComponent},
+    {path:'notifications', component: NotificationComponent},
+    {path:'profile', component: VendorProfileComponent}
+
   ]}
 ];
 

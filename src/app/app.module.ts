@@ -25,6 +25,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AngularFireModule } from "@angular/fire/";
 import { AngularFireStorageModule } from "@angular/fire/storage";
+import { VendorProfileComponent } from './components/vendor-profile/vendor-profile.component';
+import { NotificationComponent } from './components/notification/notification.component';
+import { NotificationModesPipe } from './pipes/notification-modes.pipe';
+import { HotelStatusPipe } from './pipes/hotel-status.pipe';
 
 @NgModule({
   declarations: [
@@ -39,7 +43,11 @@ import { AngularFireStorageModule } from "@angular/fire/storage";
     VendorViewOrderComponent,
     LoginComponent,
     ProgressBarComponent,
-    ConfirmPasswordComponent
+    ConfirmPasswordComponent,
+    VendorProfileComponent,
+    NotificationComponent,
+    NotificationModesPipe,
+    HotelStatusPipe
   ],
   imports: [
     BrowserModule,

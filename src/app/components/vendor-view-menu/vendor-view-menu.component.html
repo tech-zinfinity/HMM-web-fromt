@@ -82,7 +82,7 @@
                     <div style="display: flex; flex-direction: column;
                     justify-content: center; margin: 10px;"
                     *ngFor="let menu of menus">
-                        <mat-card>
+                        <mat-card class="shadow">
                             <span style="font-size: 30px; display: inline-flex;
                              justify-content: space-between; width: 100%;">{{menu.title}} 
                             <div>
@@ -93,7 +93,7 @@
                                     <mat-slide-toggle [checked]="menu.veg">NON-VEG</mat-slide-toggle>
                                 </button>
 
-                                <button mat-raised-button *ngIf="menu.available" style="margin: 10px;">
+                                <button mat-raised-button style="margin: 10px;">
                                     <mat-slide-toggle [checked]="menu.available">Available</mat-slide-toggle>
                                 </button>
 
@@ -181,7 +181,7 @@
                 </mat-accordion>
                 <div class="post">
                 <article *ngFor="let table of this.hotel?.tables">
-                    <mat-card style="padding: 0;">
+                    <mat-card style="padding: 0;" class="shadow">
                         <img [src]="table?.link">
                         <br>
                         <div style="display: flex; font-size: larger;
