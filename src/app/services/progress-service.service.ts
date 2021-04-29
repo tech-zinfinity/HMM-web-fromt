@@ -5,15 +5,14 @@ import { ProgressBarComponent } from '../components/progress-bar/progress-bar.co
 @Injectable({
   providedIn: 'root'
 })
-export class ProgressServiceService {
+export class Spinner {
 
   constructor(private dialog: MatDialog) { }
 
   open(message?:string) : MatDialogRef<ProgressBarComponent>{
     return this.dialog.open(ProgressBarComponent, {
-      // panelClass: 'transparent',
-      panelClass: 'my-class',
-      backdropClass:'green-backdrop',
+      // panelClass: 'back-black',
+      // backdropClass:'green-backdrop',
       disableClose: true,
       data: message
     });

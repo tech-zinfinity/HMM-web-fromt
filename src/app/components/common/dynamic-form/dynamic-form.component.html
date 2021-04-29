@@ -1,0 +1,57 @@
+<div style="display: flex; flex-direction: column;
+justify-content: center;" *ngIf="dynamicForm != null || dynamicForm != undefined">
+   
+   <form [formGroup]="dynamicForm" style="margin-top: 8%; display: flex; 
+   flex-direction: column; justify-content: center;">
+        <div *ngFor="let a of data">
+            <div [ngSwitch]="a.type">
+                <mat-form-field *ngSwitchCase="'text'" appearance="outline" style="width: 90%; 
+                    margin-left: 5%; margin-right: 5%;">
+                    <mat-label>{{a.fieldName}}</mat-label>
+                    <input matInput placeholder="{{a.placeHolder}}" formControlName="{{a.fieldName}}">
+                </mat-form-field>
+
+                <mat-form-field *ngSwitchCase="'select'" appearance="outline" style="width: 90%; 
+                margin-left: 5%; margin-right: 5%;">
+                    <mat-label>{{a.fieldName}}</mat-label>
+                    <mat-select formControlName="{{a.fieldName}}" >
+                        <mat-option *ngFor="let option of a.options"
+                            [value]="option">{{option}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field *ngSwitchCase="'multiselect'" appearance="outline" style="width: 90%; 
+                margin-left: 5%; margin-right: 5%;">
+                    <mat-label>{{a.fieldName}}</mat-label>
+                    <mat-select formControlName="{{a.fieldName}}" multiple>
+                        <mat-option *ngFor="let option of a.options"
+                            [value]="option">{{option}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field *ngSwitchCase="'date'" appearance="outline"
+                style="width: 90%; margin-left: 5%; margin-right: 5%;">
+                    <mat-label>{{a.fieldName}}</mat-label>
+                    <input matInput [matDatepicker]="picker1"
+                    formControlName="{{a.fieldName}}">
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1 ></mat-datepicker>
+                </mat-form-field>
+
+                <mat-slide-toggle style="margin-left:15px; margin-top:10px;
+                margin-bottom: 10px;" *ngSwitchCase="'boolean'" formControlName="{{a.fieldName}}">{{a.fieldName}}</mat-slide-toggle>
+            </div>
+            
+        </div>
+    </form>
+    <div style="display: flex; flex-direction: row;
+     width: 100%; justify-content: space-evenly; margin-top: 20px;">
+        <button mat-button style="color: black;
+        background-color: rgba(228, 221, 221, 0.938); width: 40%;"
+        (click)="submit(dynamicForm.value)" [disabled]="dynamicForm.invalid"> Submit</button>
+        
+        <button mat-button style="color: white;
+        background-color: rgb(216, 14, 14); width: 40%;"
+        (click)="ref.close()">Cancel</button>
+    </div>
+</div>

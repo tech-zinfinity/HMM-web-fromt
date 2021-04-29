@@ -1,96 +1,110 @@
 <div style="margin: 2%; width: 96%; height: auto; 
 word-wrap: break-word;" *ngIf="hotel">
-    <mat-card style="display: flex; flex-direction: column;">
+    <div></div>
+    <mat-card style="display: flex; flex-direction: column;
+     background-color: black;">
         <div style="display: flex; flex-direction: row;
         justify-content: space-between;">
-            <div>
-                <button *ngIf="!(hotel.status === 'PUBLISHED')" mat-raised-button style="background-color: green; color: white;"> PUBLISH </button>
-                <button *ngIf="(hotel.status === 'PUBLISHED')" mat-raised-button style="background-color: rgb(231, 13, 13); color: white;"> De-PUBLISH </button>
-                &nbsp;
-                <button *ngIf="!hotel.active" mat-raised-button style="background-color: yellow; color: black;"> Activate </button>
-                <button *ngIf="hotel.active" mat-raised-button style="background-color: rgb(231, 13, 13); color: white;"> De-Activate </button>
-    
-                &nbsp;
-                <button mat-raised-button style="background-color: blue; color: white;"> Edit </button>
+            <div style="display: flex; flex-direction: column; font-size: 17px;">
+                <span *ngIf="!hotel.active" class="margin-10px"> 
+                    <span style="color: white;">please activate hotel to display your menus for public</span> 
+                </span>
+                <span *ngIf="!(hotel.status === 'PUBLISHED')" class="margin-10px"> 
+                    <span style="color: white; ">please publish hotel with <span style="font-weight: bold;"> KYC and Account information</span> for approval</span> 
+                </span>
+                
             </div>
             <div>
-                <mat-icon style="color: rgb(10, 180, 10);
-                font-size: 45px; margin-right: 15px;">{{hotel.status | hotelStatus}}</mat-icon>
+                <button mat-stroked-button style="color: black;
+                background-color: white; ">
+                <mat-icon style="color: rgb(12, 160, 12);
+                margin-right: 5px;">{{hotel.status | hotelStatus}}</mat-icon>
+                {{hotel.status}}                    
+                </button>
            </div>
         </div>
         <br>
-        <div style="font-size: 15px; display: flex; flex-direction: column;">
-            <span *ngIf="!hotel.active"> 
-                <span style="color: red;">*</span>
-                <span style="color: red; font-style: italic;">please activate hotel to display your menus for public</span> 
-            </span>
-            <span *ngIf="!(hotel.status === 'PUBLISHED')"> 
-                <span style="color: red;">*</span>
-                <span style="color: red; font-style: italic;">please publish hotel with <span style="font-weight: bold;"> KYC and Account information</span> for approval</span> 
-            </span>
+        <div style="font-size: 15px; display: flex; flex-direction: row; justify-content: flex-end;">
+            <button *ngIf="!(hotel.status === 'PUBLISHED')" mat-raised-button style="background-color: rgb(19, 230, 19); color: black;"
+            (click)="confirm.open('warn', 'Do you want to send request for publish ?')"> PUBLISH </button>
+            <button *ngIf="(hotel.status === 'PUBLISHED')" mat-raised-button style="background-color: rgb(231, 13, 13); color: white;"> De-PUBLISH </button>
+            &nbsp;
+            <button *ngIf="!hotel.active" mat-raised-button style="background-color: yellow; color: black;"> Activate </button>
+            <button *ngIf="hotel.active" mat-raised-button style="background-color: rgb(231, 13, 13); color: white;"> De-Activate </button>
+            <button mat-raised-button style="background-color: gainsboro;
+            margin-left: 5px;" (click)="scrollTo(settings)"> 
+                <mat-icon style="color: black; ">settings</mat-icon> 
+            </button>
         </div>
         
     </mat-card>
     <br>
     <mat-card style="display: flex; flex-direction: column;
-     justify-content: center;" class="shadow">
-       <div style="display: flex; flex-direction: row; justify-content: space-between;">
+     justify-content: center; padding: 0%;" class="shadow">
+        <div style="background-color: rgba(0, 0, 0, 0.13);border-top-left-radius: 5px;
+        border-top-right-radius: 5px; 
+        padding: 16px; display: flex; flex-direction: row; justify-content: space-between;">
+            <span style="font-size: larger; color: black;
+            font-size: x-large; padding: 10px;">General</span>
+            <button mat-icon-button style="background-color: blue; color: white;"> 
+                <mat-icon>edit</mat-icon>
+            </button>
+        </div>
+       <div style="display: flex; flex-direction: row; 
+       justify-content: space-between; padding: 16px;">
            <div>
                 <span class="key">Hotel Registration ID : &nbsp;</span>
                 <span class="value">{{hotel.id}}</span>
            </div>
        </div>
-       <br>
-       <div>
+       <div style="padding: 16px;">
             <span class="key">Name : &nbsp;</span>
             <span class="value">{{hotel.name}}</span>
        </div>
        <br>
-       <div>
-
-       </div>
     </mat-card>
 
     <br>
+    <!--Address Starts here-->
 
     <mat-card class="shadow" style="display: flex; flex-direction: column;
-     justify-content: center;">
-     <span class="key">Address</span>
-     <br>
-
+     justify-content: center; padding: 0%;">
+        <div style="background-color: rgba(0, 0, 0, 0.13);border-top-left-radius: 5px;
+        border-top-right-radius: 5px; 
+        padding: 16px; display: flex; flex-direction: row; justify-content: space-between;">
+            <span style="font-size: larger; color: black;
+            font-size: x-large; padding: 10px;">Address</span>
+            <button mat-icon-button style="background-color: blue; color: white;"> 
+                <mat-icon>edit</mat-icon>
+            </button>
+        </div>
        <div style="display: flex; flex-direction: column; 
-       justify-content: space-between; margin-left: 20px;">
-           <div>
+       justify-content: space-between; margin-left: 20px; padding: 16px;">
+           <div class="margin-10px">
                 <span class="key">Line 1 : &nbsp;</span>
                 <span class="value">{{hotel.address.line1}}</span>
            </div>
-           <br>
-           <div>
+           <div class="margin-10px">
                 <span class="key">Line 2 : &nbsp;</span>
                 <span class="value">{{hotel.address.line2}}</span>
            </div>
-           <br>
-           <div>
+           <div class="margin-10px">
                 <span class="key">LandMark : &nbsp;</span>
                 <span class="value">{{hotel.address.landmark}}</span>
            </div>
-           <br>
-           <div>
+           <div class="margin-10px">
                 <span class="key">City : &nbsp;</span>
                 <span class="value">{{hotel.address.city}}</span>
            </div>
-           <br>
-           <div>
+           <div class="margin-10px">
                 <span class="key">State : &nbsp;</span>
                 <span class="value">{{hotel.address.state}}</span>
             </div>
-            <br>
-            <div>
+            <div class="margin-10px">
                 <span class="key">Country : &nbsp;</span>
                 <span class="value">{{hotel.address.country}}</span>
             </div>
-            <br>
-            <div>
+            <div class="margin-10px">
                 <span class="key">Pincode : &nbsp;</span>
                 <span class="value">{{hotel.address.pincode}}</span>
             </div>
@@ -101,15 +115,23 @@ word-wrap: break-word;" *ngIf="hotel">
        </div>
        <br>
     </mat-card>
+    <!--Contact Starts here-->
 
     <br>
     <mat-card class="shadow" style="display: flex; flex-direction: column;
-     justify-content: center;">
-     <span class="key">Contact Info</span>
-     <br>
-
+     justify-content: center; padding: 0%;" >
+        <div style="background-color: rgba(0, 0, 0, 0.13);border-top-left-radius: 5px;
+        border-top-right-radius: 5px; 
+        padding: 16px; display: flex; flex-direction: row; justify-content: space-between;">
+            <span style="font-size: larger; color: black;
+            font-size: x-large;padding: 10px;">Contact Information</span>
+            <button mat-icon-button style="background-color: blue; color: white;"> 
+                <mat-icon>edit</mat-icon>
+            </button>
+        </div>
        <div style="display: flex; flex-direction: column; 
-       justify-content: space-between; margin-left: 20px;">
+       justify-content: space-between; margin-left: 20px;
+       padding: 16px;">
            <div>
                 <span class="key">Phone Number : &nbsp;</span>
                 <span class="value">{{hotel.contactinfo.phone1}}</span>
@@ -119,18 +141,80 @@ word-wrap: break-word;" *ngIf="hotel">
     </mat-card>  
     
     <br>
+    <!--GST and PAN Starts here-->
+
     <mat-card style="display: flex; flex-direction: column;
-     justify-content: center;">
-     <span class="key">GST Details</span>
-     <br>
+     justify-content: center; padding: 0%;" class="shadow">
+        <div style="background-color: rgba(0, 0, 0, 0.13);border-top-left-radius: 5px;
+        border-top-right-radius: 5px; 
+        padding: 16px; display: flex; flex-direction: row; justify-content: space-between;">
+            <span style="font-size: larger; color: black;
+            font-size: x-large;padding: 10px;">GST Number and Pancard Number</span>
+            <button mat-icon-button style="background-color: blue; color: white;"> 
+                <mat-icon>edit</mat-icon>
+            </button>
+        </div>     
+        <br>
 
        <div style="display: flex; flex-direction: column; 
-       justify-content: space-between; margin-left: 20px;">
+       justify-content: space-between; margin-left: 20px;
+       padding: 16px;">
            <!-- <div>
                 <span class="key">Phone Number : &nbsp;</span>
                 <span class="value">{{hotel.contactinfo.phone1}}</span>
            </div> -->
        </div>
        <br>
-    </mat-card>  <br>
+    </mat-card>  
+    <br>
+    <!--Bank Details Starts here-->
+
+    <mat-card style="display: flex; flex-direction: column;
+    justify-content: center; padding: 0%;" class="shadow">
+       <div style="background-color: rgba(0, 0, 0, 0.13);border-top-left-radius: 5px;
+       border-top-right-radius: 5px; 
+       padding: 16px; display: flex; flex-direction: row; justify-content: space-between;">
+           <span style="font-size: larger; color: black;
+           font-size: x-large;padding: 10px;">Bank Details</span>
+           <button mat-icon-button style="background-color: blue; color: white;"> 
+               <mat-icon>add</mat-icon>
+           </button>
+       </div>     
+       <br>
+
+      <div style="display: flex; flex-direction: column; 
+      justify-content: space-between; margin-left: 20px;
+      padding: 16px;">
+          <!-- <div>
+               <span class="key">Phone Number : &nbsp;</span>
+               <span class="value">{{hotel.contactinfo.phone1}}</span>
+          </div> -->
+      </div>
+      <br>
+   </mat-card>  <br>
+
+<!--Settings Starts here-->
+   <div #settings></div>
+   <mat-card  style="display: flex; flex-direction: column;
+   justify-content: center; padding: 0%;" class="shadow">
+      <div style="background-color: rgba(0, 0, 0, 0.13);border-top-left-radius: 5px;
+      border-top-right-radius: 5px; 
+      padding: 16px; display: flex; flex-direction: row; justify-content: space-between;">
+          <span style="font-size: larger; color: black;
+          font-size: x-large;padding: 10px;">Settings</span>
+        <mat-icon style=" padding: 10px;">settings</mat-icon>
+        </div>     
+      <br>
+
+     <div style="display: flex; flex-direction: column; 
+     justify-content: space-between; margin-left: 20px;
+     padding: 16px;">
+         <!-- <div>
+              <span class="key">Phone Number : &nbsp;</span>
+              <span class="value">{{hotel.contactinfo.phone1}}</span>
+         </div> -->
+     </div>
+     <br>
+  </mat-card>  <br>
+
 </div>

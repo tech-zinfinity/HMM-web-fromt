@@ -2,6 +2,7 @@ import { Menu } from './../entities/menu';
 import { environment } from './../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Cacheable } from 'ts-cacheable';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ export class HotelOperationsService {
 
   constructor(private http: HttpClient) { }
 
+  @Cacheable()
   getMenusByHotelId(id: string){
     return this.http.get(environment.apiurl+'/ops/getMenusByHotelId'+'/'+id);
   }

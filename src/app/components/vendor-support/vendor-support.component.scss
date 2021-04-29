@@ -1,0 +1,28 @@
+
+
+@media only screen and (min-width: 1200px) {
+    .grid { 
+        display: grid;
+        grid-gap: 1rem;
+        grid-template-columns: repeat(1, 1fr);
+        margin: 1rem;
+     }
+}  
+
+@media only screen and (min-width: 992px) {
+    .grid { 
+        display: grid;
+        grid-gap: 1rem;
+        grid-template-columns: repeat(1, 1fr);
+        margin: 1rem;
+     }
+} 
+
+@media only screen and (max-width: 600px) {
+    .grid { 
+        display: grid;
+        grid-gap: 1rem;
+        grid-template-columns: repeat(1, 1fr);
+        margin: 1rem;
+     }
+}

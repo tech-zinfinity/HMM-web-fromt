@@ -1,4 +1,4 @@
-import { ProgressServiceService } from './../../services/progress-service.service';
+import { Spinner } from './../../services/progress-service.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { GenericResponse } from './../../entities/generic-response';
 import { UserService } from './../../services/user.service';
@@ -16,7 +16,7 @@ export class ConfirmPasswordComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private userService: UserService, 
     private snackbar: MatSnackBar,
-    private spinner: ProgressServiceService,
+    private spinner: Spinner,
     private router: Router) { }
 
     email: string;

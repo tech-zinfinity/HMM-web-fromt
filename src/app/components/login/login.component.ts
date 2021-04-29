@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { User } from './../../entities/user';
-import { ProgressServiceService } from './../../services/progress-service.service';
+import { Spinner } from './../../services/progress-service.service';
 import { GenericResponse } from './../../entities/generic-response';
 import { FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   constructor(private auth: AuthService, 
     private userService: UserService, 
     private snackbar: MatSnackBar,
-    private spinner: ProgressServiceService,
+    private spinner: Spinner,
     private router: Router) { }
 
   usernameControl = new FormControl(null, []);

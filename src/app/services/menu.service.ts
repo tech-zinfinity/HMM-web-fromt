@@ -13,4 +13,8 @@ export class MenuService {
   addMenubyCategory(id:string, menu: Menu){
     return this.http.post(environment.apiurl+'/ops/addMenubyCategory/'+id,menu);
   }
+
+  updateMenu(hotelId: string, menu:Menu){
+    return this.http.post(environment.apiurl+'/ops/updateMenu/'+hotelId, menu);
+  }
 }

@@ -21,18 +21,46 @@
 	<mat-sidenav #sidenav mode="side"  opened class="example-sidenav"
 	 (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">
 		<mat-nav-list >
-			<mat-list-item (click)="showSubmenu = !showSubmenu" class="parent" routerLink="/vendor/{{this.hotel?.user?.username}}">
+			<mat-list-item  (click)="showSubmenu = !showSubmenu" class="parent" (click)="syncData()"
+			matTooltip="Click to refresh and sync data" [matTooltipPosition]="tooltipPosition">
+				<span class="full-width" *ngIf="isExpanded || isShowing">Refresh</span>
+				<mat-icon mat-list-icon style="color: rgb(226, 20, 20);">sync</mat-icon>
+			</mat-list-item>	
+			<mat-divider></mat-divider>
+			<mat-list-item (click)="showSubmenu = !showSubmenu" class="parent" routerLink="/vendor/{{this.hotel?.user?.username}}"
+			matTooltip="Menu and Tables" [matTooltipPosition]="tooltipPosition">
 				<span class="full-width" *ngIf="isExpanded || isShowing" style="min-width: 200px;">
 					Menu and Tables 
 				</span>
 				<mat-icon mat-list-icon>menu_book</mat-icon>
 			</mat-list-item>
 			<mat-divider></mat-divider>
-			<mat-list-item (click)="showSubmenu = !showSubmenu" class="parent"  routerLink="orders">
+			<mat-list-item (click)="showSubmenu = !showSubmenu" class="parent"  routerLink="orders"
+			matTooltip="Orders" [matTooltipPosition]="tooltipPosition">
 				<span class="full-width" *ngIf="isExpanded || isShowing">Orders</span>
 				<mat-icon mat-list-icon>restaurant</mat-icon>
 			</mat-list-item>	
 			<mat-divider></mat-divider>
+			<mat-list-item (click)="showSubmenu = !showSubmenu" class="parent"  routerLink="settings"
+			matTooltip="Settings" [matTooltipPosition]="tooltipPosition">
+				<span class="full-width" *ngIf="isExpanded || isShowing">Settings</span>
+				<mat-icon mat-list-icon>settings</mat-icon>
+			</mat-list-item>
+			<mat-divider></mat-divider>
+			<mat-list-item (click)="showSubmenu = !showSubmenu" class="parent"  routerLink="support"
+			matTooltip="Contact Support" [matTooltipPosition]="tooltipPosition">
+				<span class="full-width" *ngIf="isExpanded || isShowing">Contact Support</span>
+				<mat-icon mat-list-icon>live_help</mat-icon>
+			</mat-list-item>
+			<mat-divider></mat-divider>
+			<mat-list-item (click)="showSubmenu = !showSubmenu" class="parent"  routerLink="revenue"
+			matTooltip="Revenue Dashboard" [matTooltipPosition]="tooltipPosition">
+				<span class="full-width" *ngIf="isExpanded || isShowing">Revenue Dashboard</span>
+				<mat-icon mat-list-icon>price_change</mat-icon>
+			</mat-list-item>
+
+			<mat-divider></mat-divider>
+
 		</mat-nav-list>
     <mat-nav-list>
 </mat-nav-list>

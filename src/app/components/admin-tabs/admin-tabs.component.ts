@@ -1,4 +1,4 @@
-import { ProgressServiceService } from './../../services/progress-service.service';
+import { Spinner } from './../../services/progress-service.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { GenericResponse } from './../../entities/generic-response';
 import { Hotel } from './../../entities/hotel';
@@ -14,7 +14,7 @@ export class AdminTabsComponent implements OnInit {
 
   constructor(private hotelService: HotelService,
     private snackbar: MatSnackBar,
-    private spinner: ProgressServiceService) { }
+    private spinner: Spinner) { }
 
   requestedHotesl: Hotel[] = [];
   approvedHotels: Hotel[] = [];

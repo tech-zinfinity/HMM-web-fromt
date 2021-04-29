@@ -1,0 +1,20 @@
+<div style="display: flex; flex-direction: column; 
+justify-content: center; width: 100%; height: 100%; font-size: 16px;">
+    <div style="height: auto; margin: 10px; font-size: 20px; 
+    display: flex; flex-direction: row; align-items: center;
+    background-color: white;
+    color: black; line-height: 1.6;letter-spacing: 1.5px;
+    word-spacing: 3px;">
+        <div>{{data.message}}</div>
+        
+    </div>
+    <div style="display: flex ; flex-direction: row; 
+    justify-content: space-around; height: auto; margin-top: 30px">
+        <div matRipple class="shadow ok" 
+        [ngStyle]="{'background-color' : (data.status | confirmationBackgroundColor), 
+        'color': (data.status | confirmationButtonText)?.color}"
+        (click)="ref.close(true)">{{(data.status | confirmationButtonText)?.ok}}</div>
+        
+        <div matRipple class="shadow cancel" (click)="ref.close(false)">{{(data.status | confirmationButtonText)?.cancel}}</div>
+    </div>
+</div>

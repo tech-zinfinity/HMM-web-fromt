@@ -17,7 +17,7 @@ import * as uuid from 'uuid';
 export class VendorMainComponent implements OnInit {
 
   @ViewChild('sidenav') sidenav: MatSidenav;
-  isExpanded = true;
+  isExpanded = false;
   showSubmenu: boolean = false;
   isShowing = false;
   showSubSubMenu: boolean = false;
@@ -30,16 +30,20 @@ export class VendorMainComponent implements OnInit {
     private hotelService: HotelService,
     private storage: FireStorageService) { }
 
+  tooltipPosition = 'after';
+  syncData(){
+    this.ngOnInit();
+  }
   mouseenter() {
-    if (!this.isExpanded) {
-      this.isShowing = true;
-    }
+    // if (!this.isExpanded) {
+    //   this.isShowing = true;
+    // }
   }
 
   mouseleave() {
-    if (!this.isExpanded) {
-      this.isShowing = false;
-    }
+    // if (!this.isExpanded) {
+    //   this.isShowing = false;
+    // }
   }
 
   ngOnInit(): void {

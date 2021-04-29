@@ -1,16 +1,13 @@
 mat-spinner {
-    zoom: 0.7
-    
-  }
+  zoom: 0.3
+  
+}
 
-  ::ng-deep  .mat-spinner
-  {
-    circle {
-        stroke: black;
-       
-    } 
-  }
+::ng-deep  .mat-spinner
+{
+  circle {
+      stroke: gold;
+     
+  } 
+}
 
-  ::ng-deep .mat-card{
-    padding: 0;
-  }

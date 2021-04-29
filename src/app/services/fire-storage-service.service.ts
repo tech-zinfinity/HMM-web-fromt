@@ -61,6 +61,8 @@ export class FireStorageService {
   }
 
   public getDownloadURL(path: string): Promise<string>{
+    this.afstorage.storage.refFromURL('gs://bucket/'
+    +path);
     return this.afstorage.storage.refFromURL('gs://bucket/'
     +path).getDownloadURL()
   }

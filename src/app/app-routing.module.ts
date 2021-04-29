@@ -1,3 +1,7 @@
+import { VendorSupportComponent } from './components/vendor-support/vendor-support.component';
+import { VendorRevenueDashboardComponent } from './components/vendor-revenue-dashboard/vendor-revenue-dashboard.component';
+import { VendorSettingsComponent } from './components/vendor-settings/vendor-settings.component';
+import { NotFoundComponent } from './components/common/not-found/not-found.component';
 import { VendorProfileComponent } from './components/vendor-profile/vendor-profile.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import { LoginGuard } from './guards/login.guard';
@@ -32,9 +36,13 @@ const routes: Routes = [
     {path: '', component: VendorViewMenuComponent},
     {path: 'orders', component: VendorViewOrderComponent},
     {path:'notifications', component: NotificationComponent},
-    {path:'profile', component: VendorProfileComponent}
+    {path:'profile', component: VendorProfileComponent},
+    {path:'settings', component: VendorSettingsComponent},
+    {path:'revenue', component: VendorRevenueDashboardComponent},
+    {path:'support', component: VendorSupportComponent}
 
-  ]}
+  ]},
+  {path: '**', component:NotFoundComponent, canActivate:[AuthGuard]}
 ];
 
 @NgModule({

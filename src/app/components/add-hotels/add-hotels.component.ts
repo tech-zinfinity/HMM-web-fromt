@@ -3,7 +3,7 @@ import { User } from './../../entities/user';
 import { Hotel } from './../../entities/hotel';
 import { GenericResponse } from './../../entities/generic-response';
 import { Router } from '@angular/router';
-import { ProgressServiceService } from './../../services/progress-service.service';
+import { Spinner } from './../../services/progress-service.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UserService } from 'src/app/services/user.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
@@ -20,7 +20,7 @@ export class AddHotelsComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private userService: UserService, 
     private snackbar: MatSnackBar,
-    private spinner: ProgressServiceService,
+    private spinner: Spinner,
     private router: Router,
     private hotelService: HotelService) { }
 

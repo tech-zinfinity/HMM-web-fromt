@@ -3,6 +3,9 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { SharedObjectService } from './services/shared-object.service';
 
+import { Observable, Observer, fromEvent, merge } from 'rxjs';
+import { map } from 'rxjs/operators';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,10 +13,13 @@ import { SharedObjectService } from './services/shared-object.service';
 })
 export class AppComponent implements OnInit{
   title = 'HotelManagement';
+  connectedToInternet: boolean = true;
 
   constructor(private auth: AuthService,
     private ops: HotelOperationsService,
     private share: SharedObjectService){}
+
+  internetConnectionStatus: boolean = true;
 
   ngOnInit(){
     if(localStorage.getItem('hmmtoken')){
@@ -24,6 +30,29 @@ export class AppComponent implements OnInit{
       this.share.updateMenuCategories(data);
     }, err=>{
 
-    })
+    });
+
+    // this.onlineStatus().subscribe(connect =>{      
+    //   if(connect){
+    //     this.connectedToInternet = true;
+    //   }else{
+    //     this.connectedToInternet = false;
+    //   }
+    // });
   }
+
+  // onlineStatus() {
+  //   console.log(fromEvent(window, 'offline').pipe(map(() => false)));
+  //   console.log(fromEvent(window, 'online').pipe(map(() => true)));
+  //   console.log(navigator.onLine);
+    
+  //   return merge<boolean>(
+      
+  //     fromEvent(window, 'offline').pipe(map(() => false)),
+  //     fromEvent(window, 'online').pipe(map(() => true)),
+  //     new Observable((sub: Observer<boolean>) => {
+  //       sub.next(navigator.onLine);
+  //       sub.complete();
+  //     }));
+  // }
 }
