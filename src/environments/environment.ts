@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiurl:'http://localhost:8080',
+  apiurl:'https://hmm-bkk.herokuapp.com',
   env:'dev',
   firebaseConfig : {
     apiKey: "AIzaSyAUT18H0jqGjWnk9aTuhMT6tx4c_d1Qwwk",
